@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+	.border{
+  background-color: palegreen;
+}
+		.button {
+  padding: 15px 25px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color:grey;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: pink;}
+
+.result{
+	background-color: yellowgreen;
+	border-style: outset;
+	font-family: sans-serif;
+	}
+.otherstyle{
+	background-color: yellowgreen;
+	font-size: 30px;
+	}
+	</style>
+
+</head>
+<body><div class="border" align="center">
+	<h1 class="otherstyle">Guessing game</h1>
+	<form>
+		<p>Your Guess (1~100)</p>
+		<input type="text" id ="guessNum">
+		<p><input class="button" type ="button" value ="start" onclick="start()" style="width: 200px;"></p></form>
+		<div class="result" id="result">
+		<div>Result</div>
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		var ans = Math.floor(Math.random()*100+1);
+		var max =100;
+		var min = 1;
+
+		function start(){
+			var input = document.getElementById("guessNum").value;
+			if(input>ans){
+				max = input;
+				operate();
+			}
+			else if(input <ans){
+				min = input;
+				operate();
+			}else{
+				alert("Bingooooooo!");
+			}
+
+		} 
+		function operate(){
+			var next = document.createElement("div");
+			var range = document.createTextNode(min + "~" + max);
+			next.appendChild(range);
+			document.getElementById("result").appendChild(next);
+		}
+	</script>
+</body>
+</html>
